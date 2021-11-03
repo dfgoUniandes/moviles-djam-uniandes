@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="#8ECAE6"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
@@ -12,12 +12,12 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="114dp"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"
         android:text="Vinilos DJAM"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -30,12 +30,21 @@
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Usuario invitado"
+        android:textSize="24sp"
+        app:backgroundTint="#023047"
+        app:cornerRadius="100dp"
+        app:elevation="2dp" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Coleccionista"
+        android:textSize="24sp"
+        app:backgroundTint="#023047"
+        app:cornerRadius="100dp" />
 
 </LinearLayout>
