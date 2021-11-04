@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8ECAE6"
+    android:gravity="center|top"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
@@ -12,23 +13,23 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="114dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
+        android:layout_height="56dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
         android:text="Vinilos DJAM"
         android:textAlignment="center"
-        android:textSize="48sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/vinyl_record_png" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
@@ -40,11 +41,19 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coleccionista"
         android:textSize="24sp"
         app:backgroundTint="#023047"
         app:cornerRadius="100dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Registrarte como coleccionista?"
+        android:textAlignment="center"
+        android:textAllCaps="true" />
 
 </LinearLayout>
