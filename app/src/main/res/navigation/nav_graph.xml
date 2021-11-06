@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/title_destination">
+
+    <fragment
+        android:id="@+id/title_destination"
+        android:name="com.example.vinilosdjam.TitleFragment"
+        android:label="title_fragment"
+        tools:layout="@layout/fragment_title2">
+        <action
+            android:id="@+id/action_title_to_albums"
+            app:destination="@id/albums_destination" />
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:launchSingleTop="true"-->
+<!--            app:popEnterAnim="@anim/slide_in_right"-->
+<!--            app:popExitAnim="@anim/slide_out_left" />-->
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/albums_destination"
+        android:name="com.example.vinilosdjam.AlbumListFragment"
+        android:label="game_fragment"
+        tools:layout="@layout/fragment_album_list">
+<!--        <action-->
+<!--            android:id="@+id/action_game_to_score"-->
+<!--            app:destination="@id/score_destination"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:launchSingleTop="true"-->
+<!--            app:popEnterAnim="@anim/slide_in_right"-->
+<!--            app:popExitAnim="@anim/slide_out_left"-->
+<!--            app:popUpTo="@+id/title_destination" />-->
+        <action
+            android:id="@+id/action_albums_destination_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vinilosdjam.AlbumDetailFragment"
+        android:label="fragment_album_detail"
+        tools:layout="@layout/fragment_album_detail" />
+</navigation>
