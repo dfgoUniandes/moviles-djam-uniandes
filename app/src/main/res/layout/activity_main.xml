@@ -8,10 +8,10 @@
     android:gravity="center|top"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".TitleFragment">
+    android:id="@+id/main">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:paddingTop="8dp"
@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageViewMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/vinyl_record_png" />
