@@ -1,77 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#8ECAE6"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_main_scene"
+    tools:context=".TitleFragment">
 
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
-</merge>
+        android:layout_height="56dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:text="Vinilos DJAM"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="#8ECAE6"-->
-<!--    android:gravity="center|top"-->
-<!--    android:orientation="vertical"-->
-<!--    app:layoutDescription="@xml/activity_main_scene"-->
-<!--    tools:context=".MainActivity">-->
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/vinyl_record_png" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="56dp"-->
-<!--        android:paddingTop="8dp"-->
-<!--        android:paddingBottom="4dp"-->
-<!--        android:text="Vinilos DJAM"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="34sp"-->
-<!--        android:textStyle="bold" />-->
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Usuario invitado"
+        android:textSize="24sp"
+        app:backgroundTint="#023047"
+        app:cornerRadius="100dp"
+        app:elevation="2dp" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView7"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/vinyl_record_png" />-->
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coleccionista"
+        android:textSize="24sp"
+        app:backgroundTint="#023047"
+        app:cornerRadius="100dp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/button4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingTop="8dp"-->
-<!--        android:paddingBottom="8dp"-->
-<!--        android:text="Usuario invitado"-->
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="#023047"-->
-<!--        app:cornerRadius="100dp"-->
-<!--        app:elevation="2dp" />-->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Registrarte como coleccionista?"
+        android:textAlignment="center"
+        android:textAllCaps="true" />
 
-<!--    <Button-->
-<!--        android:id="@+id/button5"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Coleccionista"-->
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="#023047"-->
-<!--        app:cornerRadius="100dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="¿Registrarte como coleccionista?"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAllCaps="true" />-->
-
-<!--</LinearLayout>-->
+</LinearLayout>
