@@ -13,7 +13,8 @@
         android:theme="@style/Theme.VinilosDjam">
         <activity
             android:name=".AlbumDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AlbumListActivity"/>
         <activity
             android:name=".AlbumListActivity"
             android:exported="false" />
