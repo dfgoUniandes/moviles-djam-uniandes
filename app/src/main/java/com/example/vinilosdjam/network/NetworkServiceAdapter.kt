@@ -39,6 +39,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"),
                     performers = item.getJSONArray("performers"), tracks = item.getJSONArray("tracks"),
                         comments = item.getJSONArray("comments")))
+
                 }
                 onComplete(list)
             },

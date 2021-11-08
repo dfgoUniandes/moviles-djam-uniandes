@@ -35,6 +35,7 @@
         <!--            app:popEnterAnim="@anim/slide_in_right"-->
         <!--            app:popExitAnim="@anim/slide_out_left"-->
         <!--            app:popUpTo="@+id/title_destination" />-->
+
         <action
             android:id="@+id/action_albums_destination_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
