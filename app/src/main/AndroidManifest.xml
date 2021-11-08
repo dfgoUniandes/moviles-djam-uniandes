@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vinilosdjam">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,9 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosDjam">
-
         <activity
-            android:name="MainActivity"
+            android:name=".AlbumDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".AlbumListActivity"/>
+        <activity
+            android:name=".AlbumListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
