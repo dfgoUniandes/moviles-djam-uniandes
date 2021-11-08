@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.22135416666666666" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2109375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/album_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_album_detail.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_album_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_title.xml" value="0.11322463768115942" />
+        <entry key="app/src/main/res/layout/fragment_title2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/list_albums.xml" value="0.13994565217391305" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
