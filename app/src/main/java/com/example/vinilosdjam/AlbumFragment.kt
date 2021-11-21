@@ -1,59 +1,79 @@
 package com.example.vinilosdjam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.vinilosdjam.adapters.AlbumListsAdapter
+import com.example.vinilosdjam.models.Album
+import org.json.JSONArray
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.recyclerview.widget.RecyclerView
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AlbumFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AlbumFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+
+
+class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
+    var list = mutableListOf<Album>()
+
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_album, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_album, container, false)
+        initAlbums(view)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AlbumFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AlbumFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    fun initAlbums(view: View){
+        var queue = Volley.newRequestQueue(activity)
+        var url = "https://backvynils17.herokuapp.com/albums"
+        val stringRequest = StringRequest( url,
+            { response ->
+                val resp = JSONArray(response)
+
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Album(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        cover = item.getString("cover"),
+                        recordLabel = item.getString("recordLabel"),
+                        releaseDate = item.getString("releaseDate"),
+                        genre = item.getString("genre"),
+                        description = item.getString("description"),
+                        performers = item.getJSONArray("performers"),
+                        tracks = item.getJSONArray("tracks"),
+                        comments = item.getJSONArray("comments")))
                 }
-            }
+                val recyclerView = view.findViewById<RecyclerView>(R.id.rvFragmentAlbumList)
+//                val rv = view.findViewById<>(R.id.rvAlbumList)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
+                val adapter = AlbumListsAdapter(list, this)
+                recyclerView.adapter = adapter
+            },
+            { error ->
+                error.printStackTrace()
+            })
+        queue.add(stringRequest)
     }
+
+    override fun onAlbumClick(position: Int) {
+//        Toast.makeText(this, "Album $position", Toast.LENGTH_SHORT).show()
+        val clickedAlbum = list[position]
+        val intent = Intent(activity, AlbumDetailActivity::class.java)
+        intent.putExtra("ID", clickedAlbum.id)
+        startActivity(intent)
+
+    }
+
 }
+
