@@ -4,38 +4,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.example.vinilosdjam.R
-import com.example.vinilosdjam.models.Artist
+import com.example.vinilosdjam.models.Album
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.album_list_item.view.*
-import kotlinx.android.synthetic.main.artist_list_item.view.*
 
 
-class ArtistListAdapter(
-    val artists:List<Artist>,
-    val listener: OnArtistClickListener) : RecyclerView.Adapter<ArtistListAdapter.ViewHolder.ViewHolder>(){
+class AlbumListsAdapter(
+    val albums:List<Album>,
+    val listener: OnAlbumClickListener) : RecyclerView.Adapter<AlbumListsAdapter.ViewHolder>(){
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(layoutInflater.inflate(R.layout.artist_list_item, parent, false))
+        return ViewHolder(layoutInflater.inflate(R.layout.album_list_item, parent, false))
 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.render(artists[position])
+        holder.render(albums[position])
     }
 
     override fun getItemCount(): Int {
-        return artists.size
+        return albums.size
     }
 
     inner class ViewHolder(val view:View):RecyclerView.ViewHolder(view), View.OnClickListener {
-        fun render(artist:Artist){
-            view.artistDate.text = artist.birthDate
-            view.artistName.text = artist.name
-            Picasso.get().load(artist.image).into(view.ivArtistCover)
+        fun render(album:Album){
+            view.tvName.text = album.name
+            view.tvgenre.text = album.genre
+            Picasso.get().load(album.cover).into(view.ivCover)
         }
         init {
             view.setOnClickListener(this)
@@ -44,13 +44,13 @@ class ArtistListAdapter(
         override fun onClick(v: View?) {
             val position : Int = adapterPosition
             if (position != RecyclerView.NO_POSITION){
-                listener.onArtistClick(position)
+                listener.onAlbumClick(position)
             }
         }
     }
 
-    interface OnArtistClickListener {
-        fun onArtistClick(position: Int){
+    interface OnAlbumClickListener {
+        fun onAlbumClick(position: Int){
 
 
         }
