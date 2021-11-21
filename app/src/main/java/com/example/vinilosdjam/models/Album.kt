@@ -1,5 +1,4 @@
 package com.example.vinilosdjam.models
-
 import org.json.JSONArray
 
 data class Album(

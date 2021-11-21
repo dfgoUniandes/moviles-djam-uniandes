@@ -1,54 +1,60 @@
 package com.example.vinilosdjam.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.example.vinilosdjam.R
-import com.example.vinilosdjam.databinding.AlbumItemBinding
-import com.example.vinilosdjam.models.Album
+import com.example.vinilosdjam.models.Artist
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.album_list_item.view.*
+import kotlinx.android.synthetic.main.artist_list_item.view.*
 
-class AlbumListAdapter() : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>(){
-    var albums :List<Album> = emptyList()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            AlbumViewHolder.LAYOUT,
-            parent,
-            false)
-        return AlbumViewHolder(withDataBinding)
+class ArtistListAdapter(
+    val artists:List<Artist>,
+    val listener: OnArtistClickListener) : RecyclerView.Adapter<ArtistListAdapter.ViewHolder>(){
+
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ViewHolder(layoutInflater.inflate(R.layout.artist_list_item, parent, false))
+
     }
 
-    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        holder.viewDataBinding.also {
-            it.album = albums[position]
-        }
-//        holder.viewDataBinding.root.setOnClickListener {
-//            val action = AlbumListFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-//            // Navigate using that action
-//            holder.viewDataBinding.root.findNavController().navigate(action)
-//        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.render(artists[position])
     }
-
 
     override fun getItemCount(): Int {
-        return albums.size
+        return artists.size
     }
 
+    inner class ViewHolder(val view:View):RecyclerView.ViewHolder(view), View.OnClickListener {
+        fun render(artist:Artist){
+            view.artistDate.text = artist.birthDate
+            view.artistName.text = artist.name
+            Picasso.get().load(artist.image).into(view.ivArtistCover)
+        }
+        init {
+            view.setOnClickListener(this)
+        }
 
-    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
-        RecyclerView.ViewHolder(viewDataBinding.root) {
-        companion object {
-            @LayoutRes
-            val LAYOUT = R.layout.album_item
+        override fun onClick(v: View?) {
+            val position : Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                listener.onArtistClick(position)
+            }
         }
     }
 
+    interface OnArtistClickListener {
+        fun onArtistClick(position: Int){
+
+
+        }
+    }
 
 }
