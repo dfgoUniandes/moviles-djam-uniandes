@@ -1,5 +1,6 @@
 package com.example.vinilosdjam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,26 +11,30 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilosdjam.adapters.AlbumListsAdapter
 import com.example.vinilosdjam.models.Album
-import kotlinx.android.synthetic.main.album_list.*
-import kotlinx.android.synthetic.main.fragment_album.*
 import org.json.JSONArray
+
+import androidx.recyclerview.widget.RecyclerView
+
+
+
 
 
 class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
     var list = mutableListOf<Album>()
 
 
-
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        initAlbums()
-        return inflater.inflate(R.layout.fragment_album, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_album, container, false)
+        initAlbums(view)
+        return view
     }
 
-    private fun initAlbums() {
-        var queue = Volley.newRequestQueue()
+    fun initAlbums(view: View){
+        var queue = Volley.newRequestQueue(activity)
         var url = "https://backvynils17.herokuapp.com/albums"
         val stringRequest = StringRequest( url,
             { response ->
@@ -49,9 +54,11 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
                         tracks = item.getJSONArray("tracks"),
                         comments = item.getJSONArray("comments")))
                 }
-                rvAlbumFragment.layoutManager = LinearLayoutManager(activity)
+                val recyclerView = view.findViewById<RecyclerView>(R.id.rvFragmentAlbumList)
+//                val rv = view.findViewById<>(R.id.rvAlbumList)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
                 val adapter = AlbumListsAdapter(list, this)
-                rvAlbumFragment.adapter = adapter
+                recyclerView.adapter = adapter
             },
             { error ->
                 error.printStackTrace()
@@ -59,4 +66,14 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         queue.add(stringRequest)
     }
 
+    override fun onAlbumClick(position: Int) {
+//        Toast.makeText(this, "Album $position", Toast.LENGTH_SHORT).show()
+        val clickedAlbum = list[position]
+        val intent = Intent(activity, AlbumDetailActivity::class.java)
+        intent.putExtra("ID", clickedAlbum.id)
+        startActivity(intent)
+
+    }
+
 }
+

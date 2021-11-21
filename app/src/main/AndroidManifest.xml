@@ -11,16 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosDjam">
+            android:name=".ArtistDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".TabsActivity"
             android:exported="false" />
-        <activity
-            android:name=".AlbumDetailActivity"
-            android:exported="false"
-            android:parentActivityName=".AlbumListActivity" />
-        <activity
-            android:name=".AlbumListActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -2,40 +2,47 @@ package com.example.vinilosdjam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.example.vinilosdjam.adapters.TabPageAdapter
+import androidx.appcompat.widget.Toolbar
+import androidx.viewpager.widget.ViewPager
+import com.example.vinilosdjam.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_tabs.*
 
 class TabsActivity : AppCompatActivity() {
+
+    private lateinit var pager: ViewPager // creating object of ViewPager
+    private lateinit var tab: TabLayout // creating object of TabLayout
+    private lateinit var bar: Toolbar // creating object of ToolBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tabs)
-        setupTabBar()
-    }
 
-    private fun setupTabBar() {
-        val adapter = TabPageAdapter(this, tabLayout.tabCount)
-        viewPager.adapter = adapter
-        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
-        {
-            override fun onPageSelected(position: Int) {
-                tabLayout.selectTab(tabLayout.getTabAt(position))
-            }
-        })
-        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(tab: TabLayout.Tab?) {
+        // set the references of the declared objects above
+        pager = findViewById(R.id.viewPager)
+        tab = findViewById(R.id.tabs)
+        bar = findViewById(R.id.toolbar)
 
-            }
+        // To make our toolbar show the application
+        // we need to give it to the ActionBar
+        setSupportActionBar(bar)
 
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPager.currentItem = tab.position
-            }
+        // Initializing the ViewPagerAdapter
+        val adapter = ViewPagerAdapter(supportFragmentManager)
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
+        // add fragment to the list
+        adapter.addFragment(AlbumFragment(), "Albums")
+        adapter.addFragment(
+            ArtistFragment(),
+            "Artistas"
+        )
+        adapter.addFragment(UserFragment(), "Coleccionistas")
 
-            }
+        // Adding the Adapter to the ViewPager
+        pager.adapter = adapter
 
-        })
+        // bind the viewPager with the TabLayout.
+        tab.setupWithViewPager(pager)
     }
 }
+
+
