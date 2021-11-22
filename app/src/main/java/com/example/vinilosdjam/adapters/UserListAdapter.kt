@@ -5,36 +5,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosdjam.R
-import com.example.vinilosdjam.models.Album
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.album_list_item.view.*
+import com.example.vinilosdjam.models.User
+import kotlinx.android.synthetic.main.user_list_item.view.*
 
 
-class AlbumListsAdapter(
-    val albums:List<Album>,
-    val listener: OnAlbumClickListener) : RecyclerView.Adapter<AlbumListsAdapter.ViewHolder>(){
+class UserListAdapter(
+    val users:List<User>,
+    val listener: OnUserClickListener) : RecyclerView.Adapter<UserListAdapter.ViewHolder>(){
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(layoutInflater.inflate(R.layout.album_list_item, parent, false))
+        return ViewHolder(layoutInflater.inflate(R.layout.user_list_item, parent, false))
 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.render(albums[position])
+        holder.render(users[position])
     }
 
     override fun getItemCount(): Int {
-        return albums.size
+        return users.size
     }
 
     inner class ViewHolder(val view:View):RecyclerView.ViewHolder(view), View.OnClickListener {
-        fun render(album:Album){
-            view.tvName.text = album.name
-            view.tvgenre.text = album.genre
-            Picasso.get().load(album.cover).into(view.ivCover)
+        fun render(user:User){
+            view.userName.text = user.name
+            view.userTelephone.text = user.telephone
+            view.userEmail.text = user.email
         }
         init {
             view.setOnClickListener(this)
@@ -43,13 +42,13 @@ class AlbumListsAdapter(
         override fun onClick(v: View?) {
             val position : Int = adapterPosition
             if (position != RecyclerView.NO_POSITION){
-                listener.onAlbumClick(position)
+                listener.onUserClick(position)
             }
         }
     }
 
-    interface OnAlbumClickListener {
-        fun onAlbumClick(position: Int){
+    interface OnUserClickListener {
+        fun onUserClick(position: Int){
 
 
         }

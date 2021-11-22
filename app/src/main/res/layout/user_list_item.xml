@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="150dp">
 
-    <ImageView
-        android:id="@+id/ivArtistCover"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/artist_image"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+
+
         <TextView
-            android:id="@+id/artistName"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Siembra"/>
 
         <TextView
-            android:id="@+id/artistDate"
+            android:id="@+id/userTelephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Siembra"/>
+
+        <TextView
+            android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Siembra"/>
 
 
-    </LinearLayout>
 
 
 </LinearLayout>

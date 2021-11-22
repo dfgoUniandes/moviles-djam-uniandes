@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">vinilosDjam</string>
-
-    <string name="album_name_placeholder">Nombre del album</string>
-    <string name="album_description_placeholder">Descripcion del album</string>
-    <string name="txt_no_comments">No hay comentarios para este álbum</string>
-    <string name="title_albums">Albums</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Vinilos DJAM</string>
+    <string name="artist_image">Artist image</string>
+    <string name="homme_image">Home Image</string>
+    <string name="invited_user_button">Usuario invitado</string>
+    <string name="colecter_button">Coleccionista</string>
+    <string name="register_button">¿Registrarte como coleccionista?</string>
+    <string name="album_cover_image">Album cover</string>
+    <string name="cover_detail_image">Album detail image</string>
 </resources>

@@ -5,10 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/album_list_detail_view">
+    android:id="@+id/artist_list_detail_view">
 
     <ImageView
-        android:id="@+id/ivCoverDetail"
+        android:id="@+id/ivArtistCoverDetail"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
@@ -16,48 +16,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/album_cover_image"/>
+        android:contentDescription="@string/artist_image"/>
 
     <TextView
-        android:id="@+id/tvAlbumDetail"
+        android:id="@+id/tvArtistName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@{album.name}"
+        android:text="@{artist.name}"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCoverDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/ivArtistCoverDetail" />
 
     <TextView
-        android:id="@+id/tvGenreDetail"
+        android:id="@+id/tvArtistDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@{album.genre}"
+        android:text="@{artist.description}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlbumDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvArtistName" />
 
     <TextView
-        android:id="@+id/tvReleaseDate"
+        android:id="@+id/tvBirthDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@{album.releaseDate}"
+        android:text="@{artist.BirthDate}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGenreDetail" />
-
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@{album.description}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvArtistDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

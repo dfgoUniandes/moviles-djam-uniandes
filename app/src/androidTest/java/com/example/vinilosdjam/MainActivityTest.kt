@@ -45,6 +45,6 @@ class MainActivityTest {
     fun test_nav_album_list() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.button4)).perform(click())
-        onView(withId(R.id.album_list_view)).check((matches(isDisplayed())))
+        onView(withId(R.id.activity_tabs)).check((matches(isDisplayed())))
     }
 }
