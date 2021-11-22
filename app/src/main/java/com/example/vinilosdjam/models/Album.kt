@@ -1,5 +1,8 @@
 package com.example.vinilosdjam.models
+<<<<<<< HEAD
 
+=======
+>>>>>>> 487756573d29041fffe8fc4e621b0380af54fe42
 import org.json.JSONArray
 
 data class Album(

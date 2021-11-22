@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">vinilosDjam</string>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 487756573d29041fffe8fc4e621b0380af54fe42
     <string name="album_name_placeholder">Nombre del album</string>
     <string name="album_description_placeholder">Descripcion del album</string>
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
