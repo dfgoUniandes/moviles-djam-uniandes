@@ -46,7 +46,7 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
                         collectorAlbums = item.getJSONArray("collectorAlbums"),
                         favoritePerformers = item.getJSONArray("favoritePerformers"),
                         comments = item.getJSONArray("comments")
-                    ))
+                        ))
                 }
                 val recyclerView = view.findViewById<RecyclerView>(R.id.rvFragmentUserList)
                 recyclerView.layoutManager = LinearLayoutManager(activity)

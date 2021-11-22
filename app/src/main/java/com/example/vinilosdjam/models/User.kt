@@ -1,7 +1,7 @@
 package com.example.vinilosdjam.models
 import org.json.JSONArray
 
-class User (
+data class User(
     val id:Int,
     val name:String,
     val telephone:String,
