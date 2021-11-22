@@ -28,7 +28,7 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater!!.inflate(R.layout.fragment_album, container, false)
+        val view = inflater.inflate(R.layout.fragment_album, container, false)
         initAlbums(view)
         return view
     }

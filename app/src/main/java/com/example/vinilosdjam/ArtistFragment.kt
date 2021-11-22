@@ -26,7 +26,7 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater!!.inflate(R.layout.fragment_artist, container, false)
+        val view = inflater.inflate(R.layout.fragment_artist, container, false)
         initArtists(view)
         return view
     }
