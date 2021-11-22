@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8ECAE6"
+    android:background="@color/backColor"
     android:gravity="center|top"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_main_scene"
@@ -16,7 +16,7 @@
         android:layout_height="56dp"
         android:paddingTop="8dp"
         android:paddingBottom="4dp"
-        android:text="Vinilos DJAM"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold" />
@@ -25,7 +25,8 @@
         android:id="@+id/imageViewMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/vinyl_record_png" />
+        app:srcCompat="@drawable/vinyl_record_png"
+        android:contentDescription="@string/homme_image"/>
 
     <Button
         android:id="@+id/button4"
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Usuario invitado"
+        android:text="@string/invited_user_button"
         android:textSize="24sp"
         app:backgroundTint="#023047"
         app:cornerRadius="100dp"
@@ -43,7 +44,7 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coleccionista"
+        android:text="@string/colecter_button"
         android:textSize="24sp"
         app:backgroundTint="#023047"
         app:cornerRadius="100dp" />
@@ -52,7 +53,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Registrarte como coleccionista?"
+        android:text="@string/register_button"
         android:textAlignment="center"
         android:textAllCaps="true" />
 

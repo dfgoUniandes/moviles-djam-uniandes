@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide.init
 import com.example.vinilosdjam.R
 import com.example.vinilosdjam.models.Album
 import com.squareup.picasso.Picasso

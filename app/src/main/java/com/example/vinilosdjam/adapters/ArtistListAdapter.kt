@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide.init
 import com.example.vinilosdjam.R
 import com.example.vinilosdjam.models.Artist
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.album_list_item.view.*
 import kotlinx.android.synthetic.main.artist_list_item.view.*
 
 
