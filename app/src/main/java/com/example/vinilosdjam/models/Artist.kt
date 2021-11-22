@@ -1,7 +1,8 @@
 package com.example.vinilosdjam.models
 import org.json.JSONArray
 
-class Artists {
+
+data class Artist(
     val id:Int,
     val name:String,
     val image:String,
@@ -9,4 +10,5 @@ class Artists {
     val birthDate:String,
     val albums: JSONArray,
     val performerPrizes: JSONArray
-}
+)
+

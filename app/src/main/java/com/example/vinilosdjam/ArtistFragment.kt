@@ -1,59 +1,72 @@
 package com.example.vinilosdjam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.vinilosdjam.adapters.ArtistListAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.vinilosdjam.models.Artist
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ArtistFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ArtistFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+import org.json.JSONArray
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
+
+    var list = mutableListOf<Artist>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_artist, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_artist, container, false)
+        initArtists(view)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ArtistFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ArtistFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    fun initArtists(view: View){
+        var queue = Volley.newRequestQueue(activity)
+        var url = "https://backvynils17.herokuapp.com/musicians"
+        val stringRequest = StringRequest( url,
+            { response ->
+                val resp = JSONArray(response)
+
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Artist(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        image = item.getString("image"),
+                        birthDate = item.getString("birthDate"),
+                        description = item.getString("description"),
+                        albums = item.getJSONArray("albums"),
+                        performerPrizes = item.getJSONArray("performerPrizes")))
                 }
-            }
+                val recyclerView = view.findViewById<RecyclerView>(R.id.rvFragmentArtistList)
+//                val rv = view.findViewById<>(R.id.rvAlbumList)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
+                val adapter = ArtistListAdapter(list, this)
+                recyclerView.adapter = adapter
+            },
+            { error ->
+                error.printStackTrace()
+            })
+        queue.add(stringRequest)
     }
+
+    override fun onArtistClick(position: Int) {
+        val clickedArtist = list[position]
+        val intent = Intent(activity, ArtistDetailActivity::class.java)
+        intent.putExtra("ID", clickedArtist.id)
+        startActivity(intent)
+
+    }
+
 }
