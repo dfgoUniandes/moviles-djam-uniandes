@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilosdjam.models.Album
 import com.example.vinilosdjam.models.Artist
+import com.example.vinilosdjam.models.User
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -72,6 +73,30 @@ class NetworkServiceAdapter constructor(context: Context) {
                         albums = item.getJSONArray("albums"),
                         performerPrizes = item.getJSONArray("performerPrizes"))
                     )
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getUser(onComplete:(resp:List<User>)->Unit, onError: (error: VolleyError)->Unit){
+        requestQueue.add(getRequest("collectors",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<User>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, User(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        email = item.getString("email"),
+                        telephone = item.getString("telephone"),
+                        collectorAlbums = item.getJSONArray("collectorAlbums"),
+                        favoritePerformers = item.getJSONArray("favoritePerformers"),
+                        comments = item.getJSONArray("comments")
+                    ))
                 }
                 onComplete(list)
             },
