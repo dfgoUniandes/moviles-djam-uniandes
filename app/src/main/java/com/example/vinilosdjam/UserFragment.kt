@@ -1,5 +1,6 @@
 package com.example.vinilosdjam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -72,6 +73,8 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
 
     override fun onUserClick(position: Int) {
         val clickedArtist = list[position]
+        val intent = Intent(activity, UserDetailActivity::class.java)
+        intent.putExtra("ID", clickedArtist.id)
+        startActivity(intent)
     }
-
 }
