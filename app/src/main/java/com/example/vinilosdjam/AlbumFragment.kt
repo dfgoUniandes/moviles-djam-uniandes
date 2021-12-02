@@ -32,7 +32,6 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_album, container, false)
-
         viewModelAdapter = AlbumListsAdapter(this)
 
         return view
@@ -64,7 +63,27 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
             val intent = Intent(activity, CreateAlbumActivity::class.java)
             startActivity(intent)
         }
+
     }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+
+        }
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+            it.apply {
+                viewModelAdapter!!.albums = this
+                list = this as MutableList<Album>
+            }
+        })
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        })
+    }
+
 
     override fun onAlbumClick(position: Int) {
         val clickedAlbum = list[position]

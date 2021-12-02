@@ -35,7 +35,6 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_user, container, false)
-
 //        initUsers(view)
         viewModelAdapter = UserListAdapter(this)
 

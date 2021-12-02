@@ -1,6 +1,5 @@
 package com.example.vinilosdjam
 
-
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions.click
@@ -10,10 +9,8 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.runner.AndroidJUnit4
 import com.example.vinilosdjam.adapters.AlbumListsAdapter
-
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 @RunWith(AndroidJUnit4::class)
 class ArtistListActivityTest {
@@ -31,7 +28,6 @@ class ArtistListActivityTest {
         Espresso.onView(withId(R.id.album_fragment_list_view))
             .check(matches(isDisplayed()))
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
-p
     }
 
     @Test
@@ -49,5 +45,4 @@ p
         Espresso.pressBack()
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check((matches(isDisplayed())))
     }
-
 }

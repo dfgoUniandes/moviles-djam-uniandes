@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosdjam.adapters.ArtistListAdapter
 import com.example.vinilosdjam.models.Artist
 import com.example.vinilosdjam.viewmodels.ArtistViewModel
+import kotlinx.android.synthetic.main.fragment_artist.*
 
 
 class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
@@ -30,9 +31,7 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_artist, container, false)
-
         viewModelAdapter = ArtistListAdapter(this)
-
         return view
     }
 
@@ -41,7 +40,6 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = viewModelAdapter
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
@@ -57,6 +55,12 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+
+        btCreatePrize.setOnClickListener {
+            val intent = Intent(activity, CreatePrizeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onArtistClick(position: Int) {
