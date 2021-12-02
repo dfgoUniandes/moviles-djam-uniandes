@@ -30,7 +30,9 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_artist, container, false)
+
         viewModelAdapter = ArtistListAdapter(this)
+
         return view
     }
 

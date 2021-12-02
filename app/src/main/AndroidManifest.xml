@@ -25,11 +25,9 @@
             android:name=".UserDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".TabsActivity"
-            android:exported="false" />
-        <activity
             android:name=".ArtistDetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".AlbumDetailActivity"
             android:exported="false" />

@@ -32,7 +32,9 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_album, container, false)
+
         viewModelAdapter = AlbumListsAdapter(this)
+
         return view
     }
 

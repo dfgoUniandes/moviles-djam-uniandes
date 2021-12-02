@@ -1,5 +1,6 @@
 package com.example.vinilosdjam
 
+
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions.click
@@ -13,8 +14,9 @@ import com.example.vinilosdjam.adapters.AlbumListsAdapter
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 @RunWith(AndroidJUnit4::class)
-class AlbumListActivityTest {
+class ArtistListActivityTest {
 
     @Test
     fun test_activity_in_view(){
@@ -29,6 +31,7 @@ class AlbumListActivityTest {
         Espresso.onView(withId(R.id.album_fragment_list_view))
             .check(matches(isDisplayed()))
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
+p
     }
 
     @Test
@@ -36,6 +39,7 @@ class AlbumListActivityTest {
         val activityScenario = ActivityScenario.launch(TabsActivity::class.java)
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
         try {
+
             Thread.sleep(10000)
         } catch (e: InterruptedException) {
             e.printStackTrace()
@@ -45,4 +49,5 @@ class AlbumListActivityTest {
         Espresso.pressBack()
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check((matches(isDisplayed())))
     }
+
 }
