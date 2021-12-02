@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.example.vinilosdjam.adapters.AlbumListsAdapter
 import com.example.vinilosdjam.models.Album
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosdjam.viewmodels.AlbumViewModel
+import kotlinx.android.synthetic.main.fragment_album.*
 
 
 class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
@@ -31,6 +33,7 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_album, container, false)
         viewModelAdapter = AlbumListsAdapter(this)
+
         return view
     }
 
@@ -38,6 +41,29 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         recyclerView = view.findViewById(R.id.rvFragmentAlbumList)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = viewModelAdapter
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+
+        }
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+            it.apply {
+                viewModelAdapter!!.albums = this
+                list = this as MutableList<Album>
+            }
+        })
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        })
+        btCreateAlbum.setOnClickListener {
+            val intent = Intent(activity, CreateAlbumActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 

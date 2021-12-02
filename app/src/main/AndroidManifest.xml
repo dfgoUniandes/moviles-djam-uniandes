@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosDjam" >
+
         <activity
             android:name=".CreateCollectorActivity"
             android:exported="false" />
@@ -23,13 +24,18 @@
             android:exported="false" />
         <activity
             android:name=".UserDetailActivity"
+
             android:exported="false" />
         <activity
-            android:name=".TabsActivity"
+            android:name=".CreateAlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ArtistDetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".AlbumDetailActivity"
             android:exported="false" />

@@ -6,7 +6,7 @@
     android:layout_height="150dp">
 
     <ImageView
-        android:id="@+id/ivCover"
+        android:id="@+id/ivArtistCover"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/cover_detail_image"/>
@@ -15,13 +15,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/artistName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Siembra"/>
 
         <TextView
-            android:id="@+id/tvgenre"
+            android:id="@+id/artistDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Siembra"/>

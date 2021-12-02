@@ -40,7 +40,6 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = viewModelAdapter
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
@@ -61,6 +60,7 @@ class ArtistFragment : Fragment(), ArtistListAdapter.OnArtistClickListener {
             val intent = Intent(activity, CreatePrizeActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onArtistClick(position: Int) {
