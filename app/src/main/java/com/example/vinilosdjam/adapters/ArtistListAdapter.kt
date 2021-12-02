@@ -11,8 +11,14 @@ import kotlinx.android.synthetic.main.artist_list_item.view.*
 
 
 class ArtistListAdapter(
-    val artists:List<Artist>,
+//    val artists:List<Artist>,
     val listener: OnArtistClickListener) : RecyclerView.Adapter<ArtistListAdapter.ViewHolder>(){
+
+    var artists :List<Artist> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
 
 

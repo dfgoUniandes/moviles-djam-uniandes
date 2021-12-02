@@ -11,12 +11,17 @@ import kotlinx.android.synthetic.main.album_list_item.view.*
 
 
 class AlbumListsAdapter(
-    val albums:List<Album>,
     val listener: OnAlbumClickListener) : RecyclerView.Adapter<AlbumListsAdapter.ViewHolder>(){
 
-
+    var albums :List<Album> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.album_list_item, parent, false))
 

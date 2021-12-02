@@ -5,15 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosdjam.R
+import com.example.vinilosdjam.models.Artist
 import com.example.vinilosdjam.models.User
 import kotlinx.android.synthetic.main.user_list_item.view.*
 
 
 class UserListAdapter(
-    val users:List<User>,
     val listener: OnUserClickListener) : RecyclerView.Adapter<UserListAdapter.ViewHolder>(){
 
-
+    var users :List<User> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

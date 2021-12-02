@@ -13,9 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosDjam">
         <activity
-            android:name=".TabsActivity"
+            android:name=".CreateCollectorActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".CreateCommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".ArtistDetailActivity"
             android:exported="false" />

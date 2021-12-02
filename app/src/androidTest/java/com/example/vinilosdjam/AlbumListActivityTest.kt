@@ -1,24 +1,19 @@
 package com.example.vinilosdjam
 
-import android.view.View
+
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.PerformException
-import androidx.test.espresso.UiController
-import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.swipeLeft
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.runner.AndroidJUnit4
 import com.example.vinilosdjam.adapters.AlbumListsAdapter
-import com.example.vinilosdjam.adapters.ArtistListAdapter
-import com.google.android.material.tabs.TabLayout
 
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.concurrent.CompletableFuture.allOf
+
 
 @RunWith(AndroidJUnit4::class)
 class ArtistListActivityTest {
@@ -35,6 +30,8 @@ class ArtistListActivityTest {
         val activityScenario = ActivityScenario.launch(TabsActivity::class.java)
         Espresso.onView(withId(R.id.album_fragment_list_view))
             .check(matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
+p
     }
 
     @Test
@@ -42,21 +39,15 @@ class ArtistListActivityTest {
         val activityScenario = ActivityScenario.launch(TabsActivity::class.java)
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
         try {
-            Thread.sleep(8000)
+
+            Thread.sleep(10000)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         }
-        Espresso.onView(withId(R.id.viewPager)).perform(swipeLeft());
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-        Espresso.onView(withId(R.id.rvFragmentArtistList)).perform(RecyclerViewActions.actionOnItemAtPosition<ArtistListAdapter.ViewHolder>(0, click()))
+        Espresso.onView(withId(R.id.rvFragmentAlbumList)).perform(RecyclerViewActions.actionOnItemAtPosition<AlbumListsAdapter.ViewHolder>(1, click()))
+        Espresso.onView(withId(R.id.album_list_detail_view)).check((matches(isDisplayed())))
         Espresso.pressBack()
-        Espresso.onView(withId(R.id.rvFragmentArtistList)).check((matches(isDisplayed())))
-
+        Espresso.onView(withId(R.id.rvFragmentAlbumList)).check((matches(isDisplayed())))
     }
-
 
 }

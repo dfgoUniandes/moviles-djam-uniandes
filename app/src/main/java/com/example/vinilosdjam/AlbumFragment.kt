@@ -6,21 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.vinilosdjam.adapters.AlbumListsAdapter
 import com.example.vinilosdjam.models.Album
-import org.json.JSONArray
-
 import androidx.recyclerview.widget.RecyclerView
-
-
-
+import com.example.vinilosdjam.viewmodels.AlbumViewModel
+import kotlinx.android.synthetic.main.fragment_album.*
 
 
 class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
     var list = mutableListOf<Album>()
+
+    private lateinit var viewModel: AlbumViewModel
+    private lateinit var recyclerView: RecyclerView
+    private var viewModelAdapter: AlbumListsAdapter? = null
 
 
     override fun onCreateView(
@@ -29,45 +32,41 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_album, container, false)
-        initAlbums(view)
+
+        viewModelAdapter = AlbumListsAdapter(this)
+
         return view
     }
 
-    fun initAlbums(view: View){
-        var queue = Volley.newRequestQueue(activity)
-        var url = "https://backvynils17.herokuapp.com/albums"
-        val stringRequest = StringRequest( url,
-            { response ->
-                val resp = JSONArray(response)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerView = view.findViewById(R.id.rvFragmentAlbumList)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = viewModelAdapter
+    }
 
-                for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Album(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        cover = item.getString("cover"),
-                        recordLabel = item.getString("recordLabel"),
-                        releaseDate = item.getString("releaseDate"),
-                        genre = item.getString("genre"),
-                        description = item.getString("description"),
-                        performers = item.getJSONArray("performers"),
-                        tracks = item.getJSONArray("tracks"),
-                        comments = item.getJSONArray("comments")))
-                }
-                val recyclerView = view.findViewById<RecyclerView>(R.id.rvFragmentAlbumList)
-//                val rv = view.findViewById<>(R.id.rvAlbumList)
-                recyclerView.layoutManager = LinearLayoutManager(activity)
-                val adapter = AlbumListsAdapter(list, this)
-                recyclerView.adapter = adapter
-            },
-            { error ->
-                error.printStackTrace()
-            })
-        queue.add(stringRequest)
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+
+        }
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+            it.apply {
+                viewModelAdapter!!.albums = this
+                list = this as MutableList<Album>
+            }
+        })
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        })
+        btCreateAlbum.setOnClickListener {
+            val intent = Intent(activity, CreateAlbumActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onAlbumClick(position: Int) {
-//        Toast.makeText(this, "Album $position", Toast.LENGTH_SHORT).show()
         val clickedAlbum = list[position]
         val intent = Intent(activity, AlbumDetailActivity::class.java)
         intent.putExtra("ID", clickedAlbum.id)
@@ -75,5 +74,11 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
 
     }
 
-}
+    private fun onNetworkError() {
+        if(!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
+    }
 
+}

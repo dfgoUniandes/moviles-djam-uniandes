@@ -7,4 +7,20 @@
     <string name="register_button">¿Registrarte como coleccionista?</string>
     <string name="album_cover_image">Album cover</string>
     <string name="cover_detail_image">Album detail image</string>
+
+    <string-array name="genres">
+        <item>Salsa</item>
+        <item>Rock</item>
+        <item>Classical</item>
+        <item>Folk</item>
+    </string-array>
+    <string-array name="record_label">
+        <item>Sony</item>
+        <item>Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Record</item>
+    </string-array>
+
 </resources>
