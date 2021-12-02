@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosDjam">
         <activity
+            android:name=".CreatePrizeActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateCollectorActivity"
             android:exported="false" />
         <activity
