@@ -56,8 +56,12 @@ class AlbumFragment : Fragment(), AlbumListsAdapter.OnAlbumClickListener {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+        
+        btCreateAlbum.setOnClickListener {
+            val intent = Intent(activity, CreateAlbumActivity::class.java)
+            startActivity(intent)
+        }
     }
-
 
     override fun onAlbumClick(position: Int) {
         val clickedAlbum = list[position]
