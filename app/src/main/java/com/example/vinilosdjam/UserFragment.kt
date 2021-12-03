@@ -1,5 +1,6 @@
 package com.example.vinilosdjam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,7 +38,6 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
         val view = inflater.inflate(R.layout.fragment_user, container, false)
 //        initUsers(view)
         viewModelAdapter = UserListAdapter(this)
-
         return view
     }
 

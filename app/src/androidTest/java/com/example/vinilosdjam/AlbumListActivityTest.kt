@@ -9,11 +9,12 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.runner.AndroidJUnit4
 import com.example.vinilosdjam.adapters.AlbumListsAdapter
+
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ArtistListActivityTest {
+class AlbumListActivityTest {
 
     @Test
     fun test_activity_in_view(){
@@ -35,7 +36,6 @@ class ArtistListActivityTest {
         val activityScenario = ActivityScenario.launch(TabsActivity::class.java)
         Espresso.onView(withId(R.id.rvFragmentAlbumList)).check(matches(isDisplayed()))
         try {
-
             Thread.sleep(10000)
         } catch (e: InterruptedException) {
             e.printStackTrace()
