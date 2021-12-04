@@ -19,6 +19,8 @@ import com.example.vinilosdjam.models.Album
 import com.example.vinilosdjam.models.User
 import com.example.vinilosdjam.viewmodels.AlbumViewModel
 import com.example.vinilosdjam.viewmodels.UserViewModel
+import kotlinx.android.synthetic.main.fragment_album.*
+import kotlinx.android.synthetic.main.fragment_user.*
 import org.json.JSONArray
 
 
@@ -62,6 +64,10 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+        btCreateCollector.setOnClickListener {
+            val intent = Intent(activity, CreateCollectorActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onNetworkError() {

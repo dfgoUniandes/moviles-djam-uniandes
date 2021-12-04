@@ -81,7 +81,4 @@ class CreateAlbumActivity : AppCompatActivity() {
 
         queue.add(jsonObjectRequest)
     }
-
-
-
 }
