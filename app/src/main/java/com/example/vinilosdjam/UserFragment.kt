@@ -64,10 +64,10 @@ class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
-        btCreateCollector.setOnClickListener {
-            val intent = Intent(activity, CreateCollectorActivity::class.java)
-            startActivity(intent)
-        }
+//        btCreateCollector.setOnClickListener {
+//            val intent = Intent(activity, CreateCollectorActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
     private fun onNetworkError() {
