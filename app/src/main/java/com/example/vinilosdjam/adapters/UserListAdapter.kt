@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosdjam.R
-import com.example.vinilosdjam.models.Artist
 import com.example.vinilosdjam.models.User
 import kotlinx.android.synthetic.main.user_list_item.view.*
 

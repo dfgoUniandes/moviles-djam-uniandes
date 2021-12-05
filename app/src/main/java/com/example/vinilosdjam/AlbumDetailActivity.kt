@@ -19,8 +19,8 @@ class AlbumDetailActivity : AppCompatActivity() {
     fun getAlbumId(){
         val bundle = intent.extras
         val id = bundle?.get("ID")
-        var queue = Volley.newRequestQueue(this)
-        var url = "https://backvynils17.herokuapp.com/albums/$id"
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://backvynils17.herokuapp.com/albums/$id"
 
         val stringRequest = StringRequest( url,
             { response ->

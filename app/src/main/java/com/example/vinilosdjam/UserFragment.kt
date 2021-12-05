@@ -11,18 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.example.vinilosdjam.adapters.AlbumListsAdapter
 import com.example.vinilosdjam.adapters.UserListAdapter
-import com.example.vinilosdjam.models.Album
 import com.example.vinilosdjam.models.User
-import com.example.vinilosdjam.viewmodels.AlbumViewModel
 import com.example.vinilosdjam.viewmodels.UserViewModel
-import kotlinx.android.synthetic.main.fragment_album.*
-import kotlinx.android.synthetic.main.fragment_user.*
-import org.json.JSONArray
-
 
 class UserFragment : Fragment(), UserListAdapter.OnUserClickListener {
 

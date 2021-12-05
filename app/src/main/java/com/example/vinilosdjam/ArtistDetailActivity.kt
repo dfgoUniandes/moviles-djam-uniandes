@@ -19,8 +19,8 @@ class ArtistDetailActivity : AppCompatActivity() {
     fun getArtistId(){
         val bundle = intent.extras
         val id = bundle?.get("ID")
-        var queue = Volley.newRequestQueue(this)
-        var url = "https://backvynils17.herokuapp.com/musicians/$id"
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://backvynils17.herokuapp.com/musicians/$id"
 
         val stringRequest = StringRequest( url,
             { response ->
