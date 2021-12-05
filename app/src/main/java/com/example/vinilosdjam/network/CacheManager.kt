@@ -13,13 +13,5 @@ class CacheManager(context: Context) {
                 }
             }
     }
-    private var albumDetail: HashMap<Int, List<Album>> = hashMapOf()
-    fun addComments(albumId: Int, albums: List<Album>){
-        if (!albumDetail.containsKey(albumId)){
-            albumDetail[albumId] = albums
-        }
-    }
-    fun getComments(albumId: Int) : List<Album>{
-        return if (albumDetail.containsKey(albumId)) albumDetail[albumId]!! else listOf<Album>()
-    }
+
 }
