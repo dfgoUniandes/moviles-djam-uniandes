@@ -34,13 +34,14 @@
             android:layout_marginTop="20dp"
             android:padding="10dp"
             android:text="Nombre del premio"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:labelFor="@+id/inputPrizeName"/>
 
         <EditText
             android:id="@+id/inputPrizeName"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="10dp"
             android:background="@color/white"
             android:inputType="text" />
@@ -50,8 +51,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Descripción"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:labelFor="@id/inputPrizeDescription"/>
 
         <EditText
             android:id="@+id/inputPrizeDescription"
@@ -67,13 +69,14 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Organización"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:labelFor="@+id/inputPrizeOrganization"/>
 
         <EditText
             android:id="@+id/inputPrizeOrganization"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="10dp"
             android:background="@color/white"
             android:inputType="text" />
