@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:text="@string/register_button"
         android:textAlignment="center"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
 </LinearLayout>

@@ -13,6 +13,9 @@ import com.example.vinilosdjam.models.Artist
 import com.example.vinilosdjam.models.User
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
@@ -31,7 +34,8 @@ class NetworkServiceAdapter constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
+    suspend fun getAlbums()= suspendCoroutine<List<Album>>{ cont ->
+//        onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -47,18 +51,20 @@ class NetworkServiceAdapter constructor(context: Context) {
                         releaseDate = item.getString("releaseDate"),
                         genre = item.getString("genre"),
                         description = item.getString("description"),
-                        performers = item.getJSONArray("performers"),
-                        tracks = item.getJSONArray("tracks"),
-                        comments = item.getJSONArray("comments")))
+//                        performers = item.getJSONArray("performers"),
+//                        tracks = item.getJSONArray("tracks"),
+//                        comments = item.getJSONArray("comments")
+                    ))
                 }
-                onComplete(list)
+//                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
-    fun getArtist(onComplete:(resp:List<Artist>)->Unit, onError: (error: VolleyError)->Unit){
+    suspend fun getArtist() = suspendCoroutine<List<Artist>>{ cont ->
         requestQueue.add(getRequest("musicians",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -72,18 +78,19 @@ class NetworkServiceAdapter constructor(context: Context) {
                         image = item.getString("image"),
                         birthDate = item.getString("birthDate"),
                         description = item.getString("description"),
-                        albums = item.getJSONArray("albums"),
-                        performerPrizes = item.getJSONArray("performerPrizes"))
+//                        albums = item.getJSONArray("albums"),
+//                        performerPrizes = item.getJSONArray("performerPrizes")
+                    )
                     )
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
-    fun getUser(onComplete:(resp:List<User>)->Unit, onError: (error: VolleyError)->Unit){
+    suspend fun getUser() = suspendCoroutine<List<User>>{ cont ->
         requestQueue.add(getRequest("collectors",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -96,15 +103,15 @@ class NetworkServiceAdapter constructor(context: Context) {
                         name = item.getString("name"),
                         email = item.getString("email"),
                         telephone = item.getString("telephone"),
-                        collectorAlbums = item.getJSONArray("collectorAlbums"),
-                        favoritePerformers = item.getJSONArray("favoritePerformers"),
-                        comments = item.getJSONArray("comments")
+//                        collectorAlbums = item.getJSONArray("collectorAlbums"),
+//                        favoritePerformers = item.getJSONArray("favoritePerformers"),
+//                        comments = item.getJSONArray("comments")
                     ))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 

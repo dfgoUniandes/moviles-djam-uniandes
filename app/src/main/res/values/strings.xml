@@ -7,6 +7,7 @@
     <string name="register_button">¿Registrarte como coleccionista?</string>
     <string name="album_cover_image">Album cover</string>
     <string name="cover_detail_image">Album detail image</string>
+    <string name="input_prize_description_label">Descripción del premio</string>
     <string-array name="genres">
         <item>Salsa</item>
         <item>Rock</item>
