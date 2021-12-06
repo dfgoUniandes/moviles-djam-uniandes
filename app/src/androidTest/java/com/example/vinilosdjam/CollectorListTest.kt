@@ -30,6 +30,11 @@ class CollectorListTest {
     @Test
     fun test_nav_album_detail() {
         val activityScenario = ActivityScenario.launch(TabsActivity::class.java)
+        try {
+            Thread.sleep(3000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
         Espresso.onView(ViewMatchers.withId(R.id.rvFragmentAlbumList)).check(
             ViewAssertions.matches(
                 ViewMatchers.isDisplayed()

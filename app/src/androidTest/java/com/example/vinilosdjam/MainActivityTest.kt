@@ -44,6 +44,11 @@ class MainActivityTest {
     @Test
     fun test_nav_album_list() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        try {
+            Thread.sleep(3000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
         onView(withId(R.id.button4)).perform(click())
         onView(withId(R.id.activity_tabs)).check((matches(isDisplayed())))
     }
